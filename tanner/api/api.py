@@ -39,7 +39,7 @@ class Api:
     async def return_snare_info(self, uuid, count=-1):
         query_res = []
         try:
-            query_res = await self.redis_client.zrange(uuid, '+inf', '-inf', REV, offset=0, count=count)
+            query_res = await self.redis_client.zrange(uuid, '+inf', '-inf', offset=0, count=count)
             # query_res = await self.redis_client.zrevrangebyscore(uuid, offset=0, count=count)
             # query_res = await self.redis_client.zrevrangebyscore(uuid, '+inf', '-inf', WITHSCORES=True, LIMIT=1000000, offset=0, count=count)
         except aioredis.exceptions.ConnectionError as connection_error:
