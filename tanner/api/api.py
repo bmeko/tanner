@@ -40,7 +40,7 @@ class Api:
         query_res = []
         try:
             # query_res = await self.redis_client.zrevrangebyscore(uuid, offset=0, count=count)
-            query_res = await self.redis_client.zrevrangebyscore(uuid, '+inf', '-inf', WITHSCORES, LIMIT, offset=0, count=count)
+            query_res = await self.redis_client.zrevrangebyscore(uuid, '+inf', '-inf', WITHSCORES=True, LIMIT=1000000, offset=0, count=count)
         except aioredis.exceptions.ConnectionError as connection_error:
             self.logger.exception("Can not connect to redis %s", connection_error)
         else:
