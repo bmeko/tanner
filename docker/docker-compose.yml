@@ -14,7 +14,7 @@ services:
     tty: true
     networks:
      - tanner_local
-    image: "mushorg/redis:5.0"
+    image: "mushorg/redis:latest"
     read_only: true
 
 # PHP Sandbox service
