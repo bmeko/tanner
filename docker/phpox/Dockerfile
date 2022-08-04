@@ -27,7 +27,7 @@ RUN apk -U --no-cache add \
     echo "zend_extension = "$(find /usr -name bfr.so) >> /etc/php7/php.ini && \
 #
 # Install PHP Sandbox
-    git clone --depth=1 https://github.com/mushorg/phpox /opt/phpox && \
+    git clone --depth=1 https://github.com/JohnBonJo/phpox /opt/phpox && \
     cd /opt/phpox && \
     pip3 install -r requirements.txt && \
     make && \
