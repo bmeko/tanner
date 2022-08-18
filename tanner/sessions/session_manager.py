@@ -91,8 +91,11 @@ class SessionManager:
         print("redis client place")
         print(redis_client)
         await sess.remove_associated_db()
+        print("redis client place after")
         if sess.associated_env is not None:
+            print("the if in delete session")
             await sess.remove_associated_env()
+            print("the if in delete session after")
         try:
             print("############")
             print("sending to analyzer")
@@ -106,4 +109,5 @@ class SessionManager:
             self.logger.exception("Error connect to redis, session stay in memory. %s", redis_error)
             return False
         else:
+            print("the else in delete session")
             return True
