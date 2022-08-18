@@ -88,7 +88,7 @@ class SessionManager:
             self.logger.exception("Not all sessions were moved to the storage!")
 
     async def delete_session(self, sess, redis_client):
-        print(redis_clients)
+        print("redis client place")
         await sess.remove_associated_db()
         if sess.associated_env is not None:
             await sess.remove_associated_env()
