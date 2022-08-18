@@ -82,8 +82,6 @@ class TannerServer:
                     self.hpf.create_session(session_data)
 
             if TannerConfig.get("LOCALLOG", "enabled") is True:
-                print("to log")
-                print(session_data)
                 lr = local_report()
                 lr.create_session(session_data)
 
