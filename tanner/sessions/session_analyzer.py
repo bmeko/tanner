@@ -21,10 +21,10 @@ class SessionAnalyzer:
         session = None
         await asyncio.sleep(1, loop=self._loop)
         try:
-            session = await redis_client.get(session_key, encoding="utf-8")
-            session = json.loads(session)
             print("############")
             print("in try")
+            session = await redis_client.get(session_key, encoding="utf-8")
+            session = json.loads(session)            
             print(session)
             print("############")
         except (aioredis.ProtocolError, TypeError, ValueError) as error:
