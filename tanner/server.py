@@ -15,7 +15,6 @@ from tanner.reporting.log_hpfeeds import Reporting as hpfeeds_report
 from tanner import __version__ as tanner_version
 
 class TannerServer:
-    print("mannager called here")
     
     def __init__(self):
         base_dir = TannerConfig.get("EMULATORS", "root_dir")
