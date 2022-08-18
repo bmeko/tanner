@@ -67,7 +67,7 @@ class SessionManager:
     async def delete_old_sessions(self, redis_client):
         id_for_deletion = [sess_id for sess_id, sess in self.sessions.items() if sess.is_expired()]
         for sess_id in id_for_deletion:
-            print(self.sessions[sess_id])
+            print("getting in")
             is_deleted = await self.delete_session(self.sessions[sess_id], redis_client)
             if is_deleted:
                 try:
