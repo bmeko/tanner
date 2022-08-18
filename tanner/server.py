@@ -60,7 +60,6 @@ class TannerServer:
             self.logger.info("Requested path %s", path)
             await self.dorks.extract_path(path, self.redis_client)
             detection = await self.base_handler.handle(data, session)
-            print(detection)
             session.set_attack_type(path, detection["name"])
 
             response_msg = self._make_response(msg=dict(detection=detection, sess_uuid=session.get_uuid()))
@@ -71,16 +70,20 @@ class TannerServer:
 
             # Log to Mongo
             if TannerConfig.get("MONGO", "enabled") is True:
+                print("to mongo db")
                 db = mongo_report()
                 session_id = db.create_session(session_data)
                 self.logger.info("Writing session to DB: {}".format(session_id))
 
             # Log to hpfeeds
             if TannerConfig.get("HPFEEDS", "enabled") is True:
+                print("to hpfeeds")
                 if self.hpf.connected():
                     self.hpf.create_session(session_data)
 
             if TannerConfig.get("LOCALLOG", "enabled") is True:
+                print("to log")
+                print(session_data)
                 lr = local_report()
                 lr.create_session(session_data)
 
