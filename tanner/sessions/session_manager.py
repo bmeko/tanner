@@ -14,7 +14,6 @@ class SessionManager:
         self.logger = logging.getLogger(__name__)
 
     async def add_or_update_session(self, raw_data, redis_client):
-        print("session_manager")
 
         # handle raw data
         valid_data = self.validate_data(raw_data)
