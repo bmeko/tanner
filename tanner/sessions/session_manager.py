@@ -89,6 +89,7 @@ class SessionManager:
 
     async def delete_session(self, sess, redis_client):
         print("redis client place")
+        print(redis_client)
         await sess.remove_associated_db()
         if sess.associated_env is not None:
             await sess.remove_associated_env()
