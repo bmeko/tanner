@@ -15,6 +15,7 @@ class SessionAnalyzer:
         self.queue = asyncio.Queue(loop=self._loop)
         self.logger = logging.getLogger("tanner.session_analyzer.SessionAnalyzer")
         self.attacks = ["sqli", "rfi", "lfi", "xss", "php_code_injection", "cmd_exec", "crlf"]
+        print("analyzer")
 
     async def analyze(self, session_key, redis_client):
         session = None
