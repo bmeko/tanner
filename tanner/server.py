@@ -55,11 +55,12 @@ class TannerServer:
             self.logger.exception("error parsing request: %s", data)
             response_msg = self._make_response(msg=type(error).__name__)
         else:
-            print("calling the manager")
+            
             session, _ = await self.session_manager.add_or_update_session(data, self.redis_client)
             self.logger.info("Requested path %s", path)
             await self.dorks.extract_path(path, self.redis_client)
             detection = await self.base_handler.handle(data, session)
+            print(detection)
             session.set_attack_type(path, detection["name"])
 
             response_msg = self._make_response(msg=dict(detection=detection, sess_uuid=session.get_uuid()))
