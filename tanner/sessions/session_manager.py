@@ -31,6 +31,7 @@ class SessionManager:
         else:
             self.sessions[session_id].update_session(valid_data)
         # prepare the list of sessions
+        print(self.sessions[session_id], session_id)
         return self.sessions[session_id], session_id
 
     @staticmethod
