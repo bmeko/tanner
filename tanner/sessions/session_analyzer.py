@@ -22,6 +22,9 @@ class SessionAnalyzer:
         try:
             session = await redis_client.get(session_key, encoding="utf-8")
             session = json.loads(session)
+            print("############")
+            print(session)
+            print("############")
         except (aioredis.ProtocolError, TypeError, ValueError) as error:
             self.logger.exception("Can't get session for analyze: %s", error)
         else:
