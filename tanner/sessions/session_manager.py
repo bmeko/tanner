@@ -103,7 +103,9 @@ class SessionManager:
             print("sending to analyzer")
             print("############")
             await redis_client.set(sess.get_uuid(), sess.to_json())
+            print("1st ok")
             await self.analyzer.analyze(sess.get_uuid(), redis_client)
+            print("2nd ok")
         except aioredis.ProtocolError as redis_error:
             print("############")
             print("not getting redis")
