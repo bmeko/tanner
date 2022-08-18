@@ -18,6 +18,7 @@ class TannerServer:
     def __init__(self):
         base_dir = TannerConfig.get("EMULATORS", "root_dir")
         db_name = TannerConfig.get("SQLI", "db_name")
+        print("mannager called here")
 
         self.session_manager = session_manager.SessionManager()
         self.delete_timeout = TannerConfig.get("SESSIONS", "delete_timeout")
