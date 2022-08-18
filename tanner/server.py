@@ -45,6 +45,7 @@ class TannerServer:
         return web.Response(text="Tanner server")
 
     async def handle_event(self, request):
+        print("event is being called")
         data = await request.read()
         try:
             data = json.loads(data.decode("utf-8"))
