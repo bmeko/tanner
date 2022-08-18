@@ -65,6 +65,7 @@ class SessionManager:
         return hashlib.md5(sess_id_string.encode()).hexdigest()
 
     async def delete_old_sessions(self, redis_client):
+        print("from old session")
         id_for_deletion = [sess_id for sess_id, sess in self.sessions.items() if sess.is_expired()]
         for sess_id in id_for_deletion:
             is_deleted = await self.delete_session(self.sessions[sess_id], redis_client)
@@ -75,6 +76,7 @@ class SessionManager:
                     continue
 
     async def delete_sessions_on_shutdown(self, redis_client):
+        print("from sessions on shutdown")
         id_for_deletion = list(self.sessions.keys())
 
         for sess_id in id_for_deletion:
