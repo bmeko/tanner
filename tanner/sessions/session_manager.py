@@ -69,6 +69,7 @@ class SessionManager:
         for sess_id in id_for_deletion:
             print("getting in")
             is_deleted = await self.delete_session(self.sessions[sess_id], redis_client)
+            print("getting out")
             if is_deleted:
                 try:
                     del self.sessions[sess_id]
