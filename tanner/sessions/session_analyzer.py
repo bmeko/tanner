@@ -24,7 +24,7 @@ class SessionAnalyzer:
         try:
             print("############")
             print("in try")
-            session =  redis_client.get(session_key, encoding="utf-8")
+            session = await redis_client.get(session_key, encoding="utf-8")
             session = json.loads(session)            
             print(session)
             print("############")
