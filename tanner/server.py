@@ -46,7 +46,7 @@ class TannerServer:
         return web.Response(text="Tanner server")
 
     async def handle_event(self, request):
-        
+        print("handle event")
         data = await request.read()
         
         try:
