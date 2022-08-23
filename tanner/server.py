@@ -42,6 +42,7 @@ class TannerServer:
 
     @staticmethod
     async def default_handler(request):
+        print("defult_handler")
         return web.Response(text="Tanner server")
 
     async def handle_event(self, request):
@@ -88,11 +89,13 @@ class TannerServer:
         return web.json_response(response_msg)
 
     async def handle_dorks(self, request):
+        print("handle_dorks")
         dorks = await self.dorks.choose_dorks(self.redis_client)
         response_msg = dict(version=tanner_version, response=dict(dorks=dorks))
         return web.json_response(response_msg)
 
     async def handle_version(self, request):
+        print("handle_version")
         response_msg = dict(version=tanner_version)
         return web.json_response(response_msg)
 
@@ -102,6 +105,7 @@ class TannerServer:
         await self.redis_client.wait_closed()
 
     async def delete_sessions(self):
+        print("delete_sessions")
         try:
             while True:
                 await self.session_manager.delete_old_sessions(self.redis_client)
@@ -117,6 +121,7 @@ class TannerServer:
         app.router.add_get("/version", self.handle_version)
 
     async def make_app(self):
+        print("make_app")
         app = web.Application()
         app.on_shutdown.append(self.on_shutdown)
         self.setup_routes(app)
@@ -129,6 +134,7 @@ class TannerServer:
         app["session_delete"] = asyncio.ensure_future(self.delete_sessions())
 
     async def cleanup_background_tasks(self, app):
+        print("cleanup_backgrond_tasks")
         app["session_delete"].cancel()
         await app["session_delete"]
 
