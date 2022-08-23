@@ -19,7 +19,7 @@ class SessionAnalyzer:
     async def analyze(self, session_key, redis_client):
         session = None
         print("analyzer before sleep")
-        await asyncio.sleep(1, loop=self._loop)
+        #await asyncio.sleep(1, loop=self._loop)
         print("analyzer after sleep")
         try:
             print("############")
