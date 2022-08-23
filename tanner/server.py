@@ -48,7 +48,7 @@ class TannerServer:
     async def handle_event(self, request):
         print("handle event")
         data = await request.read()
-        
+        print(redis_client)
         try:
             data = json.loads(data.decode("utf-8"))
             path = yarl.URL(data["path"]).human_repr()
