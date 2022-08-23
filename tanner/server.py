@@ -105,7 +105,7 @@ class TannerServer:
         try:
             while True:
                 await self.session_manager.delete_old_sessions(self.redis_client)
-                print("getting out from manager")
+                print("getting out of manager")
                 await asyncio.sleep(self.delete_timeout)
         except asyncio.CancelledError:
             pass
