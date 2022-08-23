@@ -125,6 +125,7 @@ class TannerServer:
         return app
 
     async def start_background_delete(self, app):
+        print("deleting the background")
         app["session_delete"] = asyncio.ensure_future(self.delete_sessions())
 
     async def cleanup_background_tasks(self, app):
