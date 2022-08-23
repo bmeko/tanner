@@ -18,8 +18,9 @@ class SessionAnalyzer:
 
     async def analyze(self, session_key, redis_client):
         session = None
+        print("analyzer before sleep")
         await asyncio.sleep(1, loop=self._loop)
-        print("analyzer")
+        print("analyzer after sleep")
         try:
             print("############")
             print("in try")
@@ -43,6 +44,7 @@ class SessionAnalyzer:
             await self.save_session(redis_client)
 
     async def save_session(self, redis_client):
+        print("save session")
         while not self.queue.empty():
             session = await self.queue.get()
             s_key = session["snare_uuid"]
@@ -55,6 +57,7 @@ class SessionAnalyzer:
                 self.queue.put(session)
 
     async def create_stats(self, session, redis_client):
+        print("create stats")
         sess_duration = session["end_time"] - session["start_time"]
         referer = None
         if sess_duration != 0:
@@ -92,6 +95,7 @@ class SessionAnalyzer:
 
     @staticmethod
     async def analyze_paths(paths, redis_client):
+        print("analyze paths")
         tbr = []
         attack_types = []
         current_path = paths[0]
@@ -157,6 +161,7 @@ class SessionAnalyzer:
         return info
 
     async def detect_crawler(self, stats, bots_owner, crawler_hosts):
+        print("detect crawler")
         for path in stats["paths"]:
             if path["path"] == "/robots.txt":
                 return (1.0, 0.0)
@@ -176,6 +181,7 @@ class SessionAnalyzer:
         return (0.0, 0.0)
 
     async def detect_attacker(self, stats, bots_owner, crawler_hosts):
+        print("detect attacker")
         if set(stats["attack_types"]).intersection(self.attacks):
             return 1.0
         if stats["requests_in_second"] > 10:
