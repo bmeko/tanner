@@ -20,7 +20,7 @@ class SessionAnalyzer:
         session = None
         print("analyzer before sleep")
         #await asyncio.sleep(1, loop=self._loop)
-        print("analyzer after sleep")
+        print(session_key)
         try:
             print("############")
             print("in try")
