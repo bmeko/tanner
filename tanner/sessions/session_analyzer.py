@@ -19,12 +19,13 @@ class SessionAnalyzer:
     async def analyze(self, session_key, redis_client):
         session = None
         print("analyzer before sleep")
-        await asyncio.sleep(1, loop=self._loop)
+        #await asyncio.sleep(1, loop=self._loop)
         print(redis_client.get("*", encoding="utf-8"))
         try:
             print("############")
             print("in try")
             session = await redis_client.get(session_key, encoding="utf-8")
+            print(session)
             session = json.loads(session)            
             print(session)
             print("############")
