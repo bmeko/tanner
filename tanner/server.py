@@ -48,15 +48,12 @@ class TannerServer:
     async def handle_event(self, request):
         data = await request.read()
         try:
-            print("trying event")
             data = json.loads(data.decode("utf-8"))
             path = yarl.URL(data["path"]).human_repr()
         except (TypeError, ValueError, KeyError) as error:
-            print("exception event")
             self.logger.exception("error parsing request: %s", data)
             response_msg = self._make_response(msg=type(error).__name__)
         else:
-            print("else event")
             session, _ = await self.session_manager.add_or_update_session(data, self.redis_client)
             self.logger.info("Requested path %s", path)
             await self.dorks.extract_path(path, self.redis_client)
