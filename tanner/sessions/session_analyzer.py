@@ -24,7 +24,9 @@ class SessionAnalyzer:
         try:
             print("############")
             print("in try")
-            session = await redis_client.get(session_key, encoding="utf-8")
+            #session = await redis_client.get(session_key, encoding="utf-8")
+            r_c = aioredis.from_url(f"redis://{uname}:{passw}@{host}:{port}",encoding="utf-8",decode_responses=True,ma_connections=poolsize)
+            session = r_c.get(session_key, encoding="utf-8")
             print(session)
             session = json.loads(session)            
             print(session)
