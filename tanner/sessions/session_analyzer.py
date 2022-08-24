@@ -20,7 +20,7 @@ class SessionAnalyzer:
         session = None
         print("analyzer before sleep")
         #await asyncio.sleep(1, loop=self._loop)
-        print(redis_client.get("*", encoding="utf-8"))
+        print(await redis_client.smembers("snare_ids", encoding="utf-8"))
         try:
             print("############")
             print("in try")
