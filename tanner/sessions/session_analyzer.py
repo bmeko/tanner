@@ -18,6 +18,10 @@ class SessionAnalyzer:
 
     async def analyze(self, session_key, redis_client):
         session = None
+        host ="localhost"
+        port =6379
+        uname=""
+        passw=""
         print("analyzer before sleep")
         #await asyncio.sleep(1, loop=self._loop)
         #print(await redis_client.smembers("snare_ids", encoding="utf-8"))
