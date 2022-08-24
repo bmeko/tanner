@@ -20,7 +20,7 @@ class SessionAnalyzer:
         session = None
         print("analyzer before sleep")
         await asyncio.sleep(1, loop=self._loop)
-        print(redis_client)
+        print(redis_client.get("*", encoding="utf-8"))
         try:
             print("############")
             print("in try")
@@ -35,9 +35,9 @@ class SessionAnalyzer:
             print("############")
             self.logger.exception("Can't get session for analyze: %s", error)
         else:
-            result = await self.create_stats(session, redis_client)
             print("############")
             print("result")
+            result = await self.create_stats(session, redis_client)
             print(result)
             print("############")
             await self.queue.put(result)
