@@ -13,12 +13,12 @@ async def tes():
 	
 async def ge(ids):
 	print(ids)
-	r= await redis_client.RedisClient.get_redis_client()
+	redis_client= await redis_client.RedisClient.get_redis_client()
 	print(r)
-	y= await r.get(ids)
+	y= await redis_client.get(ids)
 	session= json.loads(y)
 	print(session)
-	result = await SessionAnalyzer.create_stats(session, r)
+	result = await SessionAnalyzer.create_stats(session, redis_client)
 	print(result)
 
 def st(ids):
