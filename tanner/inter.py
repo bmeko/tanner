@@ -8,15 +8,17 @@ async def tes():
 	await r.set("jojo","test is done")
 
 	
-async def ge(id):
+async def ge(ids):
+	print(ids)
 	r= await redis_client.RedisClient.get_redis_client()
 	y= await r.get(id)
 	session= json.loads(y)
 	result = await SessionAnalyzer.create_stats(session, r)
 	print(result)
 
-def st(id):
+def st(ids):
+	print("getting the data as test")
 	if __name__=="__main__":
 		asyncio.run(tes())
-		asyncio.run(ge(id))
+		asyncio.run(ge(ids))
 
