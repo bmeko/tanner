@@ -105,8 +105,8 @@ class SessionManager:
             print("############")
             #await redis_client.set(sess.get_uuid(), sess.to_json())
             await redis_client.set("jojo", sess.to_json())
+            print(await redis_client.get("jojo", encoding="utf-8"))
             print("1st ok")
-            print(redis_client.get("jojo", encoding="utf-8"))
             await self.analyzer.analyze(sess.get_uuid(), redis_client)
             print("2nd ok")
         except aioredis.ProtocolError as redis_error:
