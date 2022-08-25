@@ -5,6 +5,7 @@ import aioredis
 
 from tanner.sessions.session import Session
 from tanner.sessions.session_analyzer import SessionAnalyzer
+from tanner import inter
 import time
 
 
@@ -107,7 +108,8 @@ class SessionManager:
             await redis_client.set(sess.get_uuid(), sess.to_json())
             print("1st ok")
             time.sleep(5)
-            await self.analyzer.analyze(sess.get_uuid(), redis_client)
+            inter.st(sess.get_uuid())
+            #await self.analyzer.analyze(sess.get_uuid(), redis_client)
             print("2nd ok")
         except aioredis.ProtocolError as redis_error:
             print("############")
