@@ -11,7 +11,7 @@ async def tes():
 async def ge(ids):
 	print(ids)
 	r= await redis_client.RedisClient.get_redis_client()
-	y= await r.get(id, encoding="utf-8")
+	y= await r.get(str(id))
 	#session= json.loads(y)
 	#result = await SessionAnalyzer.create_stats(session, r)
 	print(y)
