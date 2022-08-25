@@ -1,4 +1,4 @@
-import redis_client
+from tanner import redis_client
 import asyncio
 import json
 from tanner.sessions.session_analyzer import SessionAnalyzer
