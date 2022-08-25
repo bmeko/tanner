@@ -17,20 +17,14 @@ class SessionAnalyzer:
         self.attacks = ["sqli", "rfi", "lfi", "xss", "php_code_injection", "cmd_exec", "crlf"]
 
     async def analyze(self, session_key, redis_client):
-        session = None
-        host ="localhost"
-        port =6379
-        uname=""
-        passw=""
+        
         print("analyzer before sleep")
-        #await asyncio.sleep(1, loop=self._loop)
+        await asyncio.sleep(1, loop=self._loop)
         #print(await redis_client.smembers("snare_ids", encoding="utf-8"))
         try:
             print("############")
             print("in try")
             #session = await redis_client.get(session_key, encoding="utf-8")
-            r_c = aioredis.from_url(f"redis://{uname}:{passw}@{host}:{port}",encoding="utf-8",decode_responses=True,ma_connections=poolsize)
-            session = r_c.get(session_key, encoding="utf-8")
             print(session)
             session = json.loads(session)            
             print(session)
