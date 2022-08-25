@@ -19,5 +19,6 @@ async def ge(ids):
 def st(ids):
 	print("getting the data as test")
 	asyncio.run(tes())
+	print("get func")
 	asyncio.run(ge(ids))
 
