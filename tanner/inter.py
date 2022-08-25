@@ -1,4 +1,4 @@
-from tanner import redis_client
+from tanner import redis_client as r
 import asyncio
 import json
 from tanner.sessions.session_analyzer import SessionAnalyzer
@@ -13,7 +13,7 @@ async def tes():
 	
 async def ge(ids):
 	print(ids)
-	redis_client= await redis_client.RedisClient.get_redis_client()
+	redis_client= await r.RedisClient.get_redis_client()
 	print(r)
 	y= await redis_client.get(ids)
 	session= json.loads(y)
