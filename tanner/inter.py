@@ -17,6 +17,7 @@ async def ge(ids):
 	print(r)
 	y= await r.get(ids)
 	session= json.loads(y)
+	print(session)
 	result = await SessionAnalyzer.create_stats(session, r)
 	print(result)
 
