@@ -5,13 +5,15 @@ from tanner.sessions.session_analyzer import SessionAnalyzer
 
 async def tes():
 	r= await redis_client.RedisClient.get_redis_client()
+	print(r)
 	await r.set("jojo","test is done")
 
 	
 async def ge(ids):
 	print(ids)
 	r= await redis_client.RedisClient.get_redis_client()
-	y= await r.get(str(id))
+	print(r)
+	y= await r.get("jojo")
 	#session= json.loads(y)
 	#result = await SessionAnalyzer.create_stats(session, r)
 	print(y)
