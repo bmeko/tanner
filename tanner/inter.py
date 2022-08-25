@@ -2,11 +2,13 @@ from tanner import redis_client
 import asyncio
 import json
 from tanner.sessions.session_analyzer import SessionAnalyzer
+import time
 
 async def tes():
 	r= await redis_client.RedisClient.get_redis_client()
 	print(r)
 	await r.set("jojo","test is done")
+	time.sleep(5)
 
 	
 async def ge(ids):
