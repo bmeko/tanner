@@ -5,7 +5,7 @@ import aioredis
 
 from tanner.sessions.session import Session
 from tanner.sessions.session_analyzer import SessionAnalyzer
-import inter
+from tanner import inter
 
 
 class SessionManager:
