@@ -17,8 +17,8 @@ async def ge(ids):
 	print(result)
 
 def st(ids):
-	print("getting the data as test")
 	if __name__=="__main__":
+		print("getting the data as test")
 		asyncio.run(tes())
 		asyncio.run(ge(ids))
 
